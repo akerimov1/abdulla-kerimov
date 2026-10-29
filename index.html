@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.className += ' js';</script>
+  <title>Abdulla Kerimov — Research Scientist</title>
+  <meta name="description" content="Abdulla Kerimov — scientist in machine learning & numerical modeling, Stanford Earth Sciences PhD, and research mentor to 100+ high-school students." />
+
+  <!-- Favicon: inline 'AK' monogram on a cardinal roundel -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238c1515'/%3E%3Ctext x='50%25' y='50%25' dy='.08em' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='30' font-weight='700' fill='%23b1872f'%3EAK%3C/text%3E%3C/svg%3E" />
+
+  <!-- Social share preview (OpenGraph + Twitter) -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Abdulla Kerimov — Research Scientist" />
+  <meta property="og:description" content="Scientist in machine learning & numerical modeling. Stanford Earth Sciences PhD. Mentor to 100+ high-school researchers across 14 published papers." />
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Stanford_University_Main_Quad_May_2011_001.jpg/1200px-Stanford_University_Main_Quad_May_2011_001.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Abdulla Kerimov — Research Scientist" />
+  <meta name="twitter:description" content="Scientist in ML & numerical modeling. Stanford PhD. Mentor to 100+ high-school researchers." />
+  <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Stanford_University_Main_Quad_May_2011_001.jpg/1200px-Stanford_University_Main_Quad_May_2011_001.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://upload.wikimedia.org" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       Stanford "Cardinal & Sandstone" theme (light) — with an
+       INTERACTIVE, filterable publications grid.
+       ============================================================ */
+    :root {
+      --img-hero: url("stanford-quad.jpg");
+      --bg: #f7f3ea;
+      --surface: #fffdf8;
+      --text: #241f1b;
+      --text-soft: #665f54;
+      --border: #e2d9c7;
+      --cardinal: #8c1515;
+      --cardinal-deep: #691010;
+      --gold: #b1872f;
+      --accent-soft: #f6e4df;
+      --shadow: 0 1px 2px rgba(36, 31, 27, 0.05), 0 12px 32px rgba(36, 31, 27, 0.09);
+      --radius: 16px;
+      --maxw: 1080px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Inter", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { line-height: 1.15; margin: 0; }
+    a { color: inherit; text-decoration: none; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    section[id] { scroll-margin-top: 90px; }
+
+    /* ===== Sticky nav ===== */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 4vw, 2.5rem); border-bottom: 1px solid transparent; transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    .nav--solid { background: rgba(247, 243, 234, 0.9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom-color: var(--border); box-shadow: 0 2px 20px rgba(36, 31, 27, 0.06); }
+    .nav__brand { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.25rem; letter-spacing: -0.01em; color: #fdf6ee; text-shadow: 0 1px 12px rgba(0,0,0,0.35); transition: color 0.3s ease, text-shadow 0.3s ease; }
+    .nav--solid .nav__brand { color: var(--text); text-shadow: none; }
+    .nav__brand .accent { color: var(--gold); }
+    .nav__links { display: flex; gap: 0.4rem; }
+    .nav__link { padding: 0.65rem 1.35rem; border-radius: 999px; font-size: 1.18rem; font-weight: 600; color: rgba(253, 246, 238, 0.9); text-shadow: 0 1px 10px rgba(0,0,0,0.3); transition: color 0.2s ease, background 0.2s ease, text-shadow 0.2s ease; }
+    .nav__link:hover { color: #fff; background: rgba(255,255,255,0.14); }
+    .nav--solid .nav__link { color: var(--text-soft); text-shadow: none; }
+    .nav--solid .nav__link:hover { color: var(--cardinal); background: var(--accent-soft); }
+    .nav__link--active { color: #fff; background: rgba(255,255,255,0.14); }
+    .nav--solid .nav__link--active { color: var(--cardinal); background: var(--accent-soft); }
+    @media (max-width: 620px) { .nav { justify-content: center; } .nav__brand { display: none; } .nav__links { gap: 0.2rem; } .nav__link { padding: 0.55rem 0.9rem; font-size: 1.02rem; } }
+
+    /* ===== Hero ===== */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: linear-gradient(135deg, var(--cardinal-deep), #3a0a0a 70%); }
+    .hero__photo { position: absolute; inset: 0; background-image: var(--img-hero); background-size: cover; background-position: center 35%; transform: scale(1.05); animation: slowZoom 18s ease-out forwards; }
+    @keyframes slowZoom { to { transform: scale(1); } }
+    .hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,10,10,0.30) 0%, rgba(20,10,10,0.55) 60%, rgba(20,10,10,0.82) 100%), linear-gradient(90deg, rgba(90,12,12,0.55), transparent 60%); }
+    .hero__inner { position: relative; z-index: 2; max-width: var(--maxw); width: 100%; margin: 0 auto; padding: 6rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .arc { position: relative; width: 440px; height: 610px; background: transparent; -webkit-mask-image: linear-gradient(to bottom, #000 82%, rgba(0,0,0,0.55) 93%, transparent 100%); mask-image: linear-gradient(to bottom, #000 82%, rgba(0,0,0,0.55) 93%, transparent 100%); }
+    .arc__img { position: absolute; left: 50%; top: 50%; transform: translate(-40%, -40%) scale(1.2); transform-origin: center top; height: 100%; width: auto; object-fit: contain; object-position: top center; display: block; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.28)); }
+    .hero__intro { margin-top: 2.2rem; color: #fdf6ee; }
+    .hero__hey { font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.6rem, 7vw, 4.5rem); letter-spacing: -0.02em; line-height: 1.05; margin: 0; text-shadow: 0 2px 30px rgba(0,0,0,0.4); }
+    .hero__hey .accent { color: var(--gold); }
+    .hero__role { margin: 0.8rem 0 0; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #f0e6da; }
+    .hero__socials { display: flex; justify-content: center; gap: 0.9rem; margin-top: 1.6rem; }
+    .hero__socials a { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; color: #fdf6ee; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(6px); transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+    .hero__socials a:hover { transform: translateY(-3px); background: var(--gold); border-color: var(--gold); color: #241f1b; }
+    .hero__socials svg { width: 22px; height: 22px; fill: currentColor; }
+    @media (max-width: 620px) { .arc { width: 320px; height: 445px; } }
+
+    /* =====================================================================
+       FRAMED ARCH (centered) — a Stanford Romanesque-arch glass frame holds
+       the photo, centered, with the name stacked above and role/socials
+       below. Arch 420x580.
+       ===================================================================== */
+    .hero[data-hero="arch"] .hero__inner {
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 1.6rem; text-align: center;
+    }
+    .hero[data-hero="arch"] .arc {
+      flex: 0 0 auto; width: 420px; height: 580px;
+      border-radius: 210px 210px 26px 26px;
+      background: rgba(253,246,238,0.08);
+      border: 1px solid rgba(253,246,238,0.38);
+      box-shadow: 0 34px 80px rgba(0,0,0,0.48), inset 0 0 0 11px rgba(177,135,47,0.20);
+      backdrop-filter: blur(3px);
+      overflow: hidden;
+      -webkit-mask-image: none; mask-image: none;
+    }
+    .hero[data-hero="arch"] .arc__img {
+      transform: translate(-44%, 0) scale(1); top: auto; bottom: 0;
+      left: 50%; height: 90%; width: auto; object-position: bottom center;
+    }
+    .hero[data-hero="arch"] .hero__hey { font-size: clamp(3rem, 7.5vw, 5.2rem); }
+    .hero[data-hero="arch"] .hero__intro { margin: 0; }
+
+    @media (max-width: 820px) {
+      .hero[data-hero="arch"] .arc { width: 320px; height: 445px; border-radius: 160px 160px 22px 22px; }
+    }
+
+    /* ===== About ===== */
+    .about { max-width: var(--maxw); margin: 0 auto; padding: 5.5rem 1.5rem; }
+    .about__head { text-align: center; margin-bottom: 3rem; }
+    .about__eyebrow { color: var(--cardinal); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; font-size: 1rem; margin: 0 0 1rem; }
+    .about__lead { font-family: "Fraunces", serif; font-weight: 500; font-size: clamp(1.4rem, 3vw, 1.95rem); line-height: 1.35; max-width: 40ch; margin: 0 auto 1.8rem; color: var(--text); }
+    .about__cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.6rem; border: none; border-radius: 999px; background: var(--cardinal); color: #fff; font-family: inherit; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: transform 0.15s ease, background 0.2s ease; }
+    .about__cta:hover { transform: translateY(-2px); background: var(--cardinal-deep); }
+    .about__cta .arrow { transition: transform 0.2s ease; }
+    .about__cta:hover .arrow { transform: translateX(3px); }
+    .boxes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    .box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow); transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+    .box:hover { transform: translateY(-5px); border-color: var(--cardinal); box-shadow: 0 20px 40px rgba(140,21,21,0.14); }
+    .box__label { font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-soft); margin: 0 0 0.6rem; }
+    .box__num { font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.6rem, 7vw, 3.4rem); line-height: 1; color: var(--cardinal); }
+    .box__sub { margin: 0.4rem 0 0; color: var(--text-soft); font-size: 0.95rem; }
+    .box__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .box__tags li { font-size: 1.02rem; font-weight: 600; color: var(--cardinal); background: var(--accent-soft); padding: 0.4rem 0.95rem; border-radius: 999px; }
+    @media (max-width: 620px) { .boxes { grid-template-columns: 1fr; } }
+
+    .section__title { font-family: "Fraunces", serif; font-weight: 600; font-size: 2rem; margin-bottom: 2rem; display: flex; align-items: baseline; gap: 0.6rem; }
+
+    /* ===== Education ===== */
+    .edu-section { max-width: var(--maxw); margin: 0 auto; padding: 2rem 1.5rem 5.5rem; }
+    .edu { display: grid; gap: 1rem; }
+    .edu__row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.4rem 1.7rem; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--cardinal); border-radius: var(--radius); box-shadow: var(--shadow); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .edu__row:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(140,21,21,0.12); }
+    .edu__row h3 { font-family: "Fraunces", serif; font-size: 1.35rem; }
+    .edu__row h3 .edu__loc { color: var(--text-soft); font-family: "Inter", sans-serif; font-weight: 500; font-size: 0.92rem; }
+    .edu__row .edu__degree { margin: 0.3rem 0 0; color: var(--cardinal); font-weight: 600; font-size: 1.05rem; }
+    .edu__row .edu__field { margin: 0.15rem 0 0; color: var(--text-soft); font-size: 0.95rem; }
+    .edu__date { font-size: 0.9rem; font-weight: 600; color: var(--text-soft); white-space: nowrap; }
+    @media (max-width: 560px) { .edu__row { flex-direction: column; align-items: flex-start; gap: 0.6rem; } }
+
+    /* Expandable education row (Stanford) — reveals selected papers */
+    .edu__item { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--cardinal); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: box-shadow 0.25s ease; }
+    .edu__item[open] { box-shadow: 0 20px 40px rgba(140,21,21,0.12); }
+    .edu__summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.4rem 1.7rem; }
+    .edu__summary::-webkit-details-marker { display: none; }
+    .edu__summary:hover h3 { color: var(--cardinal); }
+    .edu__summary h3 { transition: color 0.2s ease; }
+    .edu__summary .edu__degree { margin: 0.3rem 0 0; color: var(--cardinal); font-weight: 600; font-size: 1.05rem; }
+    .edu__summary .edu__field { margin: 0.15rem 0 0; color: var(--text-soft); font-size: 0.95rem; }
+    .edu__hint { display: block; margin: 0.15rem 0 0; font-size: 0.82rem; font-weight: 600; color: var(--gold); }
+    .edu__right { display: flex; align-items: center; gap: 1rem; white-space: nowrap; }
+    .edu__chevron { flex: none; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--border); color: var(--cardinal); font-size: 0.9rem; transition: transform 0.25s ease, background 0.2s ease; }
+    .edu__item[open] .edu__chevron { transform: rotate(90deg); background: var(--accent-soft); }
+    .edu__papers { padding: 0 1.7rem 1.5rem; display: grid; gap: 0.55rem; }
+    .edu__papers-head { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-soft); margin: 0.2rem 0 0.4rem; }
+    .paper { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 0.8rem 1rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+    .paper:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 12px 24px rgba(140,21,21,0.10); }
+    .paper:hover .paper__arrow { transform: translate(2px, -2px); color: var(--cardinal); }
+    .paper__title { font-weight: 600; font-size: 0.95rem; line-height: 1.3; color: var(--text); }
+    .paper__meta { margin: 0.2rem 0 0; font-size: 0.82rem; color: var(--text-soft); }
+    .paper__right { display: flex; align-items: center; gap: 0.6rem; flex: none; }
+    .paper__year { font-size: 0.76rem; font-weight: 700; color: var(--text-soft); border: 1px solid var(--border); padding: 0.12rem 0.45rem; border-radius: 999px; }
+    .paper__arrow { color: var(--gold); font-size: 0.95rem; transition: transform 0.2s ease, color 0.2s ease; }
+    @media (max-width: 560px) { .paper { flex-direction: column; } .paper__right { order: -1; } }
+
+    /* ===== Work ===== */
+    .work-section { max-width: var(--maxw); margin: 0 auto; padding: 1rem 1.5rem 5.5rem; }
+    .work { display: grid; gap: 1rem; }
+    .work__item { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--cardinal); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: box-shadow 0.25s ease; }
+    .work__item[open] { box-shadow: 0 20px 40px rgba(140,21,21,0.12); }
+    .work__summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.3rem 1.6rem; }
+    .work__summary::-webkit-details-marker { display: none; }
+    .work__summary:hover .work__company { color: var(--cardinal); }
+    .work__company { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.35rem; transition: color 0.2s ease; }
+    .work__company .work__loc { color: var(--text-soft); font-family: "Inter", sans-serif; font-weight: 500; font-size: 0.92rem; }
+    .work__role { margin: 0.3rem 0 0; color: var(--cardinal); font-weight: 600; font-size: 1.05rem; }
+    .work__right { display: flex; align-items: center; gap: 1rem; white-space: nowrap; }
+    .work__date { font-size: 0.9rem; font-weight: 600; color: var(--text-soft); }
+    .work__chevron { flex: none; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--border); color: var(--cardinal); font-size: 0.9rem; transition: transform 0.25s ease, background 0.2s ease; }
+    .work__item[open] .work__chevron { transform: rotate(90deg); background: var(--accent-soft); }
+    .work__body { padding: 0 1.6rem 1.4rem; }
+    .work__body ul { display: grid; gap: 0.5rem; }
+    .work__body li { position: relative; padding-left: 1.3rem; color: var(--text-soft); font-size: 0.96rem; }
+    .work__body li::before { content: "▹"; position: absolute; left: 0; color: var(--gold); }
+    .work__body li em { color: var(--text); font-style: italic; }
+    @media (max-width: 560px) { .work__summary { flex-direction: column; align-items: flex-start; } .work__right { width: 100%; justify-content: space-between; } }
+
+    /* ============================================================
+       Publications — interactive filter grid
+       ============================================================ */
+    .pubs-section { max-width: var(--maxw); margin: 0 auto; padding: 1rem 1.5rem 4rem; }
+    .pubs__lead { margin: -0.8rem 0 1.6rem; color: var(--text-soft); font-size: 1rem; max-width: 60ch; }
+
+    /* Filter pills */
+    .filters { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.8rem; }
+    .filter {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: inherit; font-size: 0.92rem; font-weight: 600;
+      color: var(--text-soft); background: var(--surface);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.5rem 1rem; cursor: pointer;
+      transition: transform 0.15s ease, color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .filter:hover { transform: translateY(-2px); border-color: var(--gold); color: var(--cardinal); }
+    .filter[aria-pressed="true"] {
+      color: #fff; background: var(--cardinal); border-color: var(--cardinal);
+      box-shadow: 0 8px 20px rgba(140,21,21,0.22);
+    }
+
+    /* Results grid */
+    .pubgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+    @media (max-width: 620px) { .pubgrid { grid-template-columns: 1fr; } }
+    .pcard {
+      position: relative; display: flex; flex-direction: column; gap: 0.6rem;
+      padding: 1.2rem 1.2rem 1.1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 4px solid var(--gold); border-radius: 14px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease, opacity 0.3s ease;
+    }
+    .pcard:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(140,21,21,0.12); }
+    .pcard:hover .pcard__arrow { transform: translate(2px, -2px); color: var(--cardinal); }
+    .pcard__top { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+    .pcard__badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--cardinal); background: var(--accent-soft); padding: 0.22rem 0.6rem; border-radius: 999px; }
+    .pcard__arrow { color: var(--gold); font-size: 1.05rem; transition: transform 0.2s ease, color 0.2s ease; }
+    .pcard__title { font-weight: 600; font-size: 1rem; line-height: 1.3; color: var(--text); }
+    .pcard__meta { margin-top: auto; font-size: 0.85rem; color: var(--text-soft); }
+    .pcard__author { color: var(--cardinal); font-weight: 600; }
+    /* Hidden by filter: collapse out with a fade */
+    .pcard.is-hidden { display: none; }
+    /* Entrance animation when (re)shown */
+    .pcard.is-pop { animation: pop 0.35s cubic-bezier(0.2,0.7,0.2,1) both; }
+    @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
+    .pubs__empty { color: var(--text-soft); font-style: italic; padding: 1rem 0; display: none; }
+
+    /* ============================================================
+       Citation metrics band (Google Scholar)
+       ============================================================ */
+    .metrics { max-width: var(--maxw); margin: 0 auto; padding: 1.5rem 1.5rem 2rem; }
+    .metrics__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .metric {
+      position: relative; text-align: center; padding: 1.8rem 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+    }
+    .metric:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 20px 42px rgba(140,21,21,0.12); }
+    .metric__num { font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(2.4rem, 6vw, 3.3rem); line-height: 1; color: var(--cardinal); }
+    .metric__label { margin: 0.5rem 0 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-soft); }
+    .metric__note { margin: 0.2rem 0 0; font-size: 0.78rem; color: var(--text-soft); opacity: 0.8; }
+    .metrics__cite { margin: 1rem 0 0; font-size: 0.88rem; color: var(--text-soft); }
+    .metrics__cite a { color: var(--cardinal); font-weight: 600; border-bottom: 1px solid transparent; transition: border-color 0.2s ease; }
+    .metrics__cite a:hover { border-bottom-color: var(--cardinal); }
+    @media (max-width: 560px) { .metrics__grid { gap: 0.6rem; } .metric { padding: 1.2rem 0.5rem; } }
+
+    /* ============================================================
+       Testimonials — two rows of cards that scroll continuously
+       in opposite directions (marquee). Pauses on hover/focus.
+       ============================================================ */
+    .tst-section { max-width: var(--maxw); margin: 0 auto; padding: 1rem 1.5rem 5rem; }
+    /* Marquee row: a track of duplicated cards sliding left, kept
+       within the content column (indented under the header). */
+    .marquee { position: relative; display: flex; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+    .marquee__track { display: flex; gap: 1.2rem; padding: 0.4rem 0.4rem; width: max-content; animation: scrollX var(--tst-dur, 46s) linear infinite; will-change: transform; }
+    .marquee:hover .marquee__track, .marquee:focus-within .marquee__track { animation-play-state: paused; }
+    @keyframes scrollX { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    /* Testimonial card */
+    .tst {
+      flex: 0 0 auto; width: 340px;
+      display: flex; flex-direction: column; gap: 0.9rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 1.5rem 1.6rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .tst:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 18px 38px rgba(140,21,21,0.12); }
+    .tst__quote { font-family: "Fraunces", serif; font-size: 1.05rem; line-height: 1.45; color: var(--text); margin: 0; position: relative; }
+    .tst__quote::before { content: "\201C"; color: var(--gold); font-weight: 700; font-size: 1.2em; margin-right: 0.08em; }
+    .tst__quote::after { content: "\201D"; color: var(--gold); font-weight: 700; font-size: 1.2em; margin-left: 0.04em; }
+    .tst__who { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; }
+    .tst__avatar {
+      flex: none; width: 40px; height: 40px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-family: "Fraunces", serif; font-weight: 600; font-size: 1rem;
+      color: #fff; background: linear-gradient(135deg, var(--cardinal), var(--cardinal-deep));
+    }
+    .tst__name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+    .tst__school { font-size: 0.85rem; color: var(--text-soft); }
+    @media (max-width: 560px) { .tst { width: 280px; } }
+    @media (prefers-reduced-motion: reduce) {
+      /* No auto-scroll: let the user swipe each row instead */
+      .marquee { overflow-x: auto; }
+      .marquee__track { animation: none; width: max-content; }
+    }
+
+    /* ============================================================
+       Contact modal — "Get In Touch" popup form.
+       Submits to Web3Forms (free relay) so messages reach the inbox
+       without the visitor needing their own email app.
+       ============================================================ */
+    .modal { position: fixed; inset: 0; z-index: 80; display: none; align-items: center; justify-content: center; padding: 1.2rem; }
+    .modal.open { display: flex; }
+    .modal__backdrop { position: absolute; inset: 0; background: rgba(20,10,10,0.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); animation: fadeIn 0.25s ease; }
+    .modal__card { position: relative; width: 100%; max-width: 460px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 30px 70px rgba(0,0,0,0.35); padding: 1.8rem; animation: popUp 0.28s cubic-bezier(0.2,0.7,0.2,1); }
+    @keyframes fadeIn { from { opacity: 0; } }
+    @keyframes popUp { from { opacity: 0; transform: translateY(16px) scale(0.97); } }
+    .modal__close { position: absolute; top: 0.8rem; right: 0.8rem; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--border); background: var(--bg); color: var(--text-soft); cursor: pointer; font-size: 1.1rem; line-height: 1; transition: color 0.2s ease, border-color 0.2s ease, transform 0.15s ease; }
+    .modal__close:hover { color: var(--cardinal); border-color: var(--cardinal); transform: rotate(90deg); }
+    .modal__eyebrow { color: var(--cardinal); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.78rem; margin: 0 0 0.4rem; }
+    .modal__title { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.6rem; margin: 0 0 1.2rem; }
+    .field { display: block; margin-bottom: 0.9rem; }
+    .field__label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-soft); margin-bottom: 0.35rem; }
+    .field__input, .field__area { width: 100%; font-family: inherit; font-size: 0.95rem; color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.85rem; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+    .field__area { resize: vertical; min-height: 110px; }
+    .field__input:focus, .field__area:focus { outline: none; border-color: var(--cardinal); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .modal__submit { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 1.6rem; border: none; border-radius: 999px; background: var(--cardinal); color: #fff; font-family: inherit; font-weight: 600; font-size: 0.98rem; cursor: pointer; transition: transform 0.15s ease, background 0.2s ease, opacity 0.2s ease; }
+    .modal__submit:hover { transform: translateY(-2px); background: var(--cardinal-deep); }
+    .modal__submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+    .modal__status { margin: 0.9rem 0 0; font-size: 0.9rem; text-align: center; min-height: 1.2em; }
+    .modal__status.ok { color: #2f7d3b; }
+    .modal__status.err { color: var(--cardinal); }
+    .modal__alt { margin: 0.9rem 0 0; font-size: 0.82rem; text-align: center; color: var(--text-soft); }
+    .modal__alt a { color: var(--cardinal); font-weight: 600; }
+
+    /* ===== Scroll-reveal ===== */
+    .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); will-change: opacity, transform; }
+    .js .reveal.in-view { opacity: 1; transform: none; }
+    .js .reveal--stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+    .js .reveal--stagger.in-view > * { opacity: 1; transform: none; }
+    .js .reveal--stagger.in-view > *:nth-child(2) { transition-delay: 0.08s; }
+    .js .reveal--stagger.in-view > *:nth-child(3) { transition-delay: 0.16s; }
+    .js .reveal--stagger.in-view > *:nth-child(4) { transition-delay: 0.24s; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal, .js .reveal--stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .hero__photo { animation: none; transform: none; }
+      .pcard.is-pop { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Sticky nav ===== -->
+  <nav class="nav" aria-label="Primary">
+    <a class="nav__brand" href="#top">Abdulla <span class="accent">Kerimov</span></a>
+    <div class="nav__links">
+      <a class="nav__link" href="#about">About</a>
+      <a class="nav__link" href="#publications">Publications</a>
+      <a class="nav__link" href="#testimonials">Testimonials</a>
+      <a class="nav__link" href="#education">Education</a>
+      <a class="nav__link" href="#experience">Experience</a>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top" data-hero="arch">
+    <div class="hero__photo" role="img" aria-label="Stanford University Main Quad"></div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <figure class="arc" style="margin:0;">
+        <img class="arc__img" src="photo_cutout_web.png" alt="Abdulla Kerimov" />
+      </figure>
+      <div class="hero__intro">
+        <h1 class="hero__hey">Hey, I'm <span class="accent">Abdulla</span></h1>
+        <p class="hero__role">Research Scientist</p>
+        <div class="hero__socials">
+          <a href="https://www.linkedin.com/in/abdulla-kerimov-6872a972/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+          <a href="https://scholar.google.com/citations?user=AvxNLqAAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+            <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.84 3.77A8 8 0 0 1 12 9a8 8 0 0 1 7.16 4.27L24 9.5 12 0z"/></svg>
+          </a>
+          <a href="mailto:akerimov@alumni.stanford.edu" aria-label="Email">
+            <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 12.713 1.5 5.25V18a1.5 1.5 0 0 0 1.5 1.5h18a1.5 1.5 0 0 0 1.5-1.5V5.25L12 12.713zM12 11 22.5 3.75A1.5 1.5 0 0 0 21 3H3a1.5 1.5 0 0 0-1.5.75L12 11z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About me ===== -->
+  <section class="about" id="about">
+    <div class="about__head reveal">
+      <p class="about__eyebrow">About Me</p>
+      <p class="about__lead">I'm a scientist focused on research and developing machine learning and numerical modeling methods to solve complex problems across the sciences.</p>
+      <button class="about__cta" type="button" data-open-contact>Get In Touch <span class="arrow">→</span></button>
+    </div>
+    <div class="boxes reveal reveal--stagger">
+      <div class="box">
+        <p class="box__label">Experience</p>
+        <div class="box__num" data-count-to="12" data-count-suffix="+">12+</div>
+        <p class="box__sub">Years of research &amp; development</p>
+      </div>
+      <div class="box">
+        <p class="box__label">Research Mentorship</p>
+        <div class="box__num" data-count-to="100" data-count-suffix="+">100+</div>
+        <p class="box__sub">High school students guided from first research question to first publication</p>
+      </div>
+      <div class="box">
+        <p class="box__label">Skills</p>
+        <ul class="box__tags"><li>Science</li><li>AI / Machine Learning</li><li>Programming</li><li>Research</li></ul>
+      </div>
+      <div class="box">
+        <p class="box__label">Research Topics</p>
+        <p class="box__sub" style="margin:0 0 0.9rem;">Student research &amp; papers I've guided span:</p>
+        <ul class="box__tags"><li>Earth Science</li><li>Environmental Science</li><li>Physics</li><li>Engineering</li><li>Energy</li><li>AI in Finance/Business</li><li>AI in Sports</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Research Impact — Google Scholar metrics ===== -->
+  <section class="metrics" id="impact" aria-label="Research impact metrics">
+    <div class="metrics__grid reveal reveal--stagger">
+      <div class="metric">
+        <div class="metric__num" data-count-to="230" data-count-suffix="+">230+</div>
+        <p class="metric__label">Citations</p>
+        <p class="metric__note">182 since 2020</p>
+      </div>
+      <div class="metric">
+        <div class="metric__num" data-count-to="7">7</div>
+        <p class="metric__label">h-index</p>
+        <p class="metric__note">6 since 2020</p>
+      </div>
+      <div class="metric">
+        <div class="metric__num" data-count-to="5">5</div>
+        <p class="metric__label">i10-index</p>
+        <p class="metric__note">4 since 2020</p>
+      </div>
+    </div>
+    <p class="metrics__cite reveal">Source: <a href="https://scholar.google.com/citations?user=AvxNLqAAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar profile ↗</a></p>
+  </section>
+
+  <!-- ===== Student Publications (interactive) ===== -->
+  <section class="pubs-section" id="publications">
+    <h2 class="section__title reveal">Selected Student Publications</h2>
+    <p class="pubs__lead reveal">Peer-reviewed papers I mentored from first research question to publication, in the <em>National High School Journal of Science (NHSJS)</em> and the <em>Journal of High School Science (JHSS)</em>. Filter by research domain.</p>
+
+    <!-- Filter pills (counts filled by JS) -->
+    <div class="filters reveal" role="group" aria-label="Filter publications by domain">
+      <button class="filter" data-filter="all" aria-pressed="false">All</button>
+      <button class="filter" data-filter="sports" aria-pressed="false">🏅 Sports</button>
+      <button class="filter" data-filter="finance" aria-pressed="false">📈 Finance &amp; Business</button>
+      <button class="filter" data-filter="environment" aria-pressed="true">🌱 Environmental &amp; Earth</button>
+      <button class="filter" data-filter="engineering" aria-pressed="false">⚙️ Engineering &amp; Security</button>
+    </div>
+
+    <p class="pubs__empty">No papers in this category.</p>
+
+    <div class="pubgrid reveal" id="pubgrid">
+      <!-- Sports -->
+      <a class="pcard" data-cat="sports" href="https://nhsjs.com/2026/automated-highlight-generation-of-amateur-table-tennis-videos-using-machine-learning/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">🏅 Sports · 2026</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Automated Highlight Generation of Amateur Table Tennis Videos Using Machine Learning</div>
+        <div class="pcard__meta"><span class="pcard__author">Vishal Sivakumar</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="sports" href="https://nhsjs.com/2026/lap-by-lap-machine-learning-prediction-of-end-of-race-formula-1-points-from-lap-level-timing-and-telemetry-data/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">🏅 Sports · 2026</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Lap-by-Lap Machine Learning Prediction of End-of-Race Formula 1 Points from Lap-Level Timing and Telemetry Data</div>
+        <div class="pcard__meta"><span class="pcard__author">Nikhil Sastry</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="sports" href="https://nhsjs.com/2025/explainable-machine-learning-models-to-predict-endurance-of-athletes/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">🏅 Sports · 2025</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Explainable Machine Learning Models to Predict Endurance of Athletes</div>
+        <div class="pcard__meta"><span class="pcard__author">Arjun Bawa</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="sports" href="https://nhsjs.com/2025/identifying-current-position-of-a-player-using-machine-learning-approach/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">🏅 Sports · 2025</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Identifying Current Position of a Player Using Machine Learning Approach</div>
+        <div class="pcard__meta"><span class="pcard__author">Sam Brown</span> · NHSJS</div>
+      </a>
+      <!-- Finance -->
+      <a class="pcard" data-cat="finance" href="https://nhsjs.com/2025/maximizing-bank-telemarketing-effectiveness-through-machine-learning-and-data-balancing-techniques/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">📈 Finance · 2025</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Maximizing Bank Telemarketing Effectiveness Through Machine Learning and Data Balancing Techniques</div>
+        <div class="pcard__meta"><span class="pcard__author">Jak Ho</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="finance" href="https://nhsjs.com/2025/a-modern-approach-to-uplift-marketing-using-artificial-intelligence-to-maximize-marketing-efficiency/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">📈 Finance · 2025</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">A Modern Approach to Uplift Marketing: Using Artificial Intelligence to Maximize Marketing Efficiency</div>
+        <div class="pcard__meta"><span class="pcard__author">Victor Fu-Zhou</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="finance" href="https://nhsjs.com/2025/predicting-stock-market-returns-using-a-twitter-sentiment-analysis/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">📈 Finance · 2025</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Predicting Stock Market Returns Using a Twitter Sentiment Analysis</div>
+        <div class="pcard__meta"><span class="pcard__author">Vidur Arun</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="finance" href="https://jhss.scholasticahq.com/article/133741-hotel-reservation-cancellations-predictive-modeling-and-feature-impact-analysis" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">📈 Finance · 2025</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Hotel Reservation Cancellations: Predictive Modeling and Feature Impact Analysis</div>
+        <div class="pcard__meta"><span class="pcard__author">Grant Lau</span> · JHSS</div>
+      </a>
+      <!-- Environment -->
+      <a class="pcard" data-cat="environment" href="https://nhsjs.com/2026/joint-plant-species-disease-prediction-a-comparative-evaluation-of-classification-approaches-and-novel-conditional-multi-task-learning-frameworks/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">🌱 Environmental · 2026</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Joint Plant Species-Disease Prediction: A Comparative Evaluation of Classification Approaches and Novel Conditional Multi-Task Learning Frameworks</div>
+        <div class="pcard__meta"><span class="pcard__author">Ameya Kella</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="environment" href="https://nhsjs.com/2026/tree-seedlings-survival-prediction-using-machine-learning-under-class-imbalance/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">🌱 Environmental · 2026</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Tree Seedlings Survival Prediction Using Machine Learning Under Class Imbalance</div>
+        <div class="pcard__meta"><span class="pcard__author">Leyla Bashirova</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="environment" href="https://nhsjs.com/2025/understanding-the-dynamics-of-air-quality-in-greece-in-conjunction-with-the-environmental-and-meteorological-indicators-with-ai/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">🌱 Environmental · 2025</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Understanding the Dynamics of Air Quality in Greece in Conjunction with the Environmental and Meteorological Indicators With AI</div>
+        <div class="pcard__meta"><span class="pcard__author">Walter Kusuma</span> · NHSJS</div>
+      </a>
+      <!-- Engineering -->
+      <a class="pcard" data-cat="engineering" href="https://nhsjs.com/2025/predicting-ic-congestion-with-computer-vision-models/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">⚙️ Engineering · 2025</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">Predicting IC Congestion with Computer Vision Models</div>
+        <div class="pcard__meta"><span class="pcard__author">Aarush Tiyyagura</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="engineering" href="https://nhsjs.com/2026/a-comparative-evaluation-of-unsupervised-anomaly-detection-for-suspicious-and-malicious-system-call-classification-on-real-honeypot-data/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">⚙️ Engineering · 2026</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">A Comparative Evaluation of Unsupervised Anomaly Detection for Suspicious and Malicious System Call Classification on Real Honeypot Data</div>
+        <div class="pcard__meta"><span class="pcard__author">Vidya Sagar Vuyyuru</span> · NHSJS</div>
+      </a>
+      <a class="pcard" data-cat="engineering" href="https://nhsjs.com/2026/ai-based-fake-news-detection-on-social-media-posts-combining-multimodal-and-unimodal-methods-for-binary-classification/" target="_blank" rel="noopener">
+        <div class="pcard__top"><span class="pcard__badge">⚙️ Engineering · 2026</span><span class="pcard__arrow" aria-hidden="true">↗</span></div>
+        <div class="pcard__title">AI-Based Fake News Detection on Social Media Posts: Combining Multimodal and Unimodal Methods for Binary Classification</div>
+        <div class="pcard__meta"><span class="pcard__author">Siddhi Lakkarsu</span> · NHSJS</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Student Testimonials (animated marquee) ===== -->
+  <section class="tst-section" id="testimonials">
+    <h2 class="section__title reveal">Student Testimonials</h2>
+
+    <!-- Single row — scrolls left. Cards are duplicated so the loop is seamless. -->
+    <div class="marquee reveal" aria-label="Student testimonials">
+      <div class="marquee__track">
+        <!-- set A -->
+        <figure class="tst">
+          <blockquote class="tst__quote">Abdulla was a joy to work under, he was always helpful and clear. I learned a lot through that experience and would recommend to others.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">VZ</span><span><span class="tst__name">Victor Fu Zhou</span><br><span class="tst__school">Rice University</span></span></figcaption>
+        </figure>
+        <figure class="tst">
+          <blockquote class="tst__quote">Abdulla was an exceptional mentor with immense patience and lots of practical knowledge to share. We spent a great deal of time exploring potential research directions, and throughout his mentorship I learned how to think critically about ML research — not just how to build models, but how to formulate meaningful research questions, interpret model behavior and results.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">LH</span><span><span class="tst__name">Linh Hoang</span><br><span class="tst__school">Columbia University</span></span></figcaption>
+        </figure>
+        <figure class="tst">
+          <blockquote class="tst__quote">Working with Abdulla was a fantastic experience. After each meeting, he provided clear, actionable next steps along with the necessary resources to help me make steady progress on my project. I can confidently say that my mentorship with Abdulla was what helped me get my freshman-year internship.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">GL</span><span><span class="tst__name">Grant Lau</span><br><span class="tst__school">Northeastern University</span></span></figcaption>
+        </figure>
+        <figure class="tst">
+          <blockquote class="tst__quote">I had a wonderful experience working with Abdulla. I knew nothing about ML going into our search, and he guided me through the process patiently while also letting me experiment independently. I can't wait to continue exploring ML at Dartmouth College.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">DS</span><span><span class="tst__name">Daria Stoyanova</span><br><span class="tst__school">Dartmouth College</span></span></figcaption>
+        </figure>
+        <figure class="tst">
+          <blockquote class="tst__quote">Mr. Kerimov was my mentor and co-author of a research paper that investigated the effects of tweets on stock returns. His guidance during the project was exceptional, and he made the process of building ML models, and documenting our findings, incredibly easy to understand. His mentorship was incredibly valuable, and we produced a quality paper that was published in the NHSJS that also fostered my interest in AI.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">VA</span><span><span class="tst__name">Vidur Arun</span><br><span class="tst__school">Boston University</span></span></figcaption>
+        </figure>
+        <figure class="tst">
+          <blockquote class="tst__quote">Abdulla didn't just mentor me through the AI mentorship program — he transformed how I think about research. Under his guidance, I co-authored two papers. He has a rare ability to combine deep technical expertise with genuine investment in his students' growth, and the research instincts I built under him are directly shaping my path to NYU. If you want a mentor who will push you to do work you are genuinely proud of, Abdulla is that mentor.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">CP</span><span><span class="tst__name">Constantine Patsis</span><br><span class="tst__school">New York University</span></span></figcaption>
+        </figure>
+        <!-- set A (duplicate for seamless loop) -->
+        <figure class="tst" aria-hidden="true">
+          <blockquote class="tst__quote">Abdulla was a joy to work under, he was always helpful and clear. I learned a lot through that experience and would recommend to others.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">VZ</span><span><span class="tst__name">Victor Fu Zhou</span><br><span class="tst__school">Rice University</span></span></figcaption>
+        </figure>
+        <figure class="tst" aria-hidden="true">
+          <blockquote class="tst__quote">Abdulla was an exceptional mentor with immense patience and lots of practical knowledge to share. We spent a great deal of time exploring potential research directions, and throughout his mentorship I learned how to think critically about ML research — not just how to build models, but how to formulate meaningful research questions, interpret model behavior and results.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">LH</span><span><span class="tst__name">Linh Hoang</span><br><span class="tst__school">Columbia University</span></span></figcaption>
+        </figure>
+        <figure class="tst" aria-hidden="true">
+          <blockquote class="tst__quote">Working with Abdulla was a fantastic experience. After each meeting, he provided clear, actionable next steps along with the necessary resources to help me make steady progress on my project. I can confidently say that my mentorship with Abdulla was what helped me get my freshman-year internship.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">GL</span><span><span class="tst__name">Grant Lau</span><br><span class="tst__school">Northeastern University</span></span></figcaption>
+        </figure>
+        <figure class="tst" aria-hidden="true">
+          <blockquote class="tst__quote">I had a wonderful experience working with Abdulla. I knew nothing about ML going into our search, and he guided me through the process patiently while also letting me experiment independently. I can't wait to continue exploring ML at Dartmouth College.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">DS</span><span><span class="tst__name">Daria Stoyanova</span><br><span class="tst__school">Dartmouth College</span></span></figcaption>
+        </figure>
+        <figure class="tst" aria-hidden="true">
+          <blockquote class="tst__quote">Mr. Kerimov was my mentor and co-author of a research paper that investigated the effects of tweets on stock returns. His guidance during the project was exceptional, and he made the process of building ML models, and documenting our findings, incredibly easy to understand. His mentorship was incredibly valuable, and we produced a quality paper that was published in the NHSJS that also fostered my interest in AI.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">VA</span><span><span class="tst__name">Vidur Arun</span><br><span class="tst__school">Boston University</span></span></figcaption>
+        </figure>
+        <figure class="tst" aria-hidden="true">
+          <blockquote class="tst__quote">Abdulla didn't just mentor me through the AI mentorship program — he transformed how I think about research. Under his guidance, I co-authored two papers. He has a rare ability to combine deep technical expertise with genuine investment in his students' growth, and the research instincts I built under him are directly shaping my path to NYU. If you want a mentor who will push you to do work you are genuinely proud of, Abdulla is that mentor.</blockquote>
+          <figcaption class="tst__who"><span class="tst__avatar" aria-hidden="true">CP</span><span><span class="tst__name">Constantine Patsis</span><br><span class="tst__school">New York University</span></span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section class="edu-section" id="education">
+    <h2 class="section__title reveal">Education</h2>
+    <div class="edu reveal reveal--stagger">
+      <!-- Stanford — click to reveal selected publications (from Google Scholar) -->
+      <details class="edu__item">
+        <summary class="edu__summary">
+          <div>
+            <h3>Stanford University <span class="edu__loc">· Stanford, CA</span></h3>
+            <p class="edu__degree">Ph.D. in Earth Sciences</p>
+            <p class="edu__field">Computational physics — numerical modeling of pore-scale physics.</p>
+            <span class="edu__hint">▸ View selected publications</span>
+          </div>
+          <span class="edu__right">
+            <span class="edu__date">2014 — 2018</span>
+            <span class="edu__chevron" aria-hidden="true">›</span>
+          </span>
+        </summary>
+        <div class="edu__papers">
+          <p class="edu__papers-head">Selected Publications · Google Scholar</p>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:rmuvC79q63oC" target="_blank" rel="noopener">
+            <span><span class="paper__title">Digital rock advances from a material point method approach for simulation of frame moduli and a sedimentary petrology-inspired method for creation of synthetic samples</span><p class="paper__meta">Lander, Cook, Guilkey, Kerimov et al. · Geophysics</p></span>
+            <span class="paper__right"><span class="paper__year">2024</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:YohjEiUPhakC" target="_blank" rel="noopener">
+            <span><span class="paper__title">Method and Apparatus for Petrophysical Classification, Characterization, and Uncertainty Estimation</span><p class="paper__meta">Wolf, Zhang, Walker, de la Barrera, Biswas, Kerimov · US Patent App.</p></span>
+            <span class="paper__right"><span class="paper__year">2024</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:0N-VGjzr574C" target="_blank" rel="noopener">
+            <span><span class="paper__title">Systems and methods for estimating mechanical properties of rocks using grain contact models</span><p class="paper__meta">Cook, Kerimov, Lane · US Patent 11,009,497</p></span>
+            <span class="paper__right"><span class="paper__year">2021</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:_axFR9aDTf0C" target="_blank" rel="noopener">
+            <span><span class="paper__title">Estimating dry rock frame moduli of high-resolution 3D digital rock images using the contact-mechanics-based effective medium approach</span><p class="paper__meta">Kerimov, Cook, Lane, Lakshtanov, Gettemy · Geophysics</p></span>
+            <span class="paper__right"><span class="paper__year">2020</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:ruyezt5ZtCIC" target="_blank" rel="noopener">
+            <span><span class="paper__title">Particula: A simulator tool for computational rock physics of granular media</span><p class="paper__meta">Al Ibrahim, Kerimov, Mukerji, Mavko · Geophysics</p></span>
+            <span class="paper__right"><span class="paper__year">2019</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:Ug5p-4gJ2f0C" target="_blank" rel="noopener">
+            <span><span class="paper__title">Static and dynamic effective moduli of elastic-perfectly plastic granular aggregates under normal compression</span><p class="paper__meta">Kerimov, Mavko, Mukerji, Dvorkin · Geophysics</p></span>
+            <span class="paper__right"><span class="paper__year">2019</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:XoXfffV-tXoC" target="_blank" rel="noopener">
+            <span><span class="paper__title">Rock compressibility from microcomputed tomography images: Controls on digital rock simulations</span><p class="paper__meta">Saxena, Hofmann, Hows, Saenger, Duranti, Stefani et al. · Geophysics</p></span>
+            <span class="paper__right"><span class="paper__year">2019</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:foquWX3nUaYC" target="_blank" rel="noopener">
+            <span><span class="paper__title">The Influence of Convex Particles' Irregular Shape and Varying Size on Porosity, Permeability, and Elastic Bulk Modulus of Granular Porous Media</span><p class="paper__meta">Kerimov, Mavko, Mukerji, Dvorkin, Al Ibrahim · J. Geophysical Research: Solid Earth</p></span>
+            <span class="paper__right"><span class="paper__year">2018</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:SpbeaW3--B0C" target="_blank" rel="noopener">
+            <span><span class="paper__title">Mechanical trapping of particles in granular media</span><p class="paper__meta">Kerimov, Mavko, Mukerji, Al Ibrahim · Physical Review E</p></span>
+            <span class="paper__right"><span class="paper__year">2018</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:Dip1O2bNi0gC" target="_blank" rel="noopener">
+            <span><span class="paper__title">Scale and Boundary Effects on the Effective Elastic Properties of 2-D and 3-D Non-REV Heterogeneous Porous Media</span><p class="paper__meta">Wollner, Kerimov, Mavko · J. Geophysical Research: Solid Earth</p></span>
+            <span class="paper__right"><span class="paper__year">2018</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:86PQX7AUzd4C" target="_blank" rel="noopener">
+            <span><span class="paper__title">The impact of grain-scale changes in microstructure geometry on effective mechanical and transport properties of granular porous media (Ph.D. dissertation)</span><p class="paper__meta">Kerimov · Stanford University</p></span>
+            <span class="paper__right"><span class="paper__year">2018</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <a class="paper" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AvxNLqAAAAAJ&citation_for_view=AvxNLqAAAAAJ:HbR8gkJAVGIC" target="_blank" rel="noopener">
+            <span><span class="paper__title">Digital rocks with irregularly shaped grains: A simulator tool for computational rock physics</span><p class="paper__meta">Al Ibrahim, Kerimov, Mukerji, Mavko · SEG International Exposition</p></span>
+            <span class="paper__right"><span class="paper__year">2018</span><span class="paper__arrow" aria-hidden="true">↗</span></span>
+          </a>
+          <p class="edu__papers-head" style="margin-top:0.6rem;"><a href="https://scholar.google.com/citations?user=AvxNLqAAAAAJ&hl=en" target="_blank" rel="noopener" style="color:var(--cardinal);">View full profile on Google Scholar ↗</a></p>
+        </div>
+      </details>
+
+      <div class="edu__row">
+        <div>
+          <h3>Colorado School of Mines <span class="edu__loc">· Golden, CO</span></h3>
+          <p class="edu__degree">M.S. in Engineering</p>
+          <p class="edu__field">Experimental physics — laboratory measurements and analysis of pore-scale physics.</p>
+        </div>
+        <span class="edu__date">2011 — 2013</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Work Experience ===== -->
+  <section class="work-section" id="experience">
+    <h2 class="section__title reveal">Work Experience</h2>
+    <div class="work reveal reveal--stagger">
+      <details class="work__item">
+        <summary class="work__summary">
+          <div><span class="work__company">bp America <span class="work__loc">· Houston, TX</span></span><p class="work__role">Applied Scientist, Subsurface R&amp;D</p></div>
+          <span class="work__right"><span class="work__date">2021 — Present</span><span class="work__chevron" aria-hidden="true">›</span></span>
+        </summary>
+        <div class="work__body">
+          <ul>
+            <li>Architected, built, and deployed LLM-powered agentic AI systems — leveraging tool-calling, multi-agent orchestration, and human-in-the-loop guardrails — to automate end-to-end workflows and solve complex subsurface-modeling problems at production scale.</li>
+            <li>Evaluated Code Llama Instruct as a coding assistant for subsurface developers — comparing zero/one/two-shot in-context learning, RAG, and PEFT — and built an automated pipeline to evaluate LLM-generated code.</li>
+            <li>Developed time-series models forecasting energy efficiency from GDP and energy-demand data across countries and sectors.</li>
+            <li>Built and deployed multi-class models predicting geological depositional elements from petrophysical properties across global regions.</li>
+            <li>Developed CNNs predicting rock properties and fluid types from multi-attribute seismic, and K-means rock-typing from 3D digital-rock images.</li>
+            <li>Built interactive apps and dashboards (bokeh, panel, gradio, ipywidgets) for exploring petrophysical data.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="work__item">
+        <summary class="work__summary">
+          <div><span class="work__company">bp America <span class="work__loc">· Houston, TX</span></span><p class="work__role">Computational Scientist, 3D Digital Rocks Images</p></div>
+          <span class="work__right"><span class="work__date">2019 — 2021</span><span class="work__chevron" aria-hidden="true">›</span></span>
+        </summary>
+        <div class="work__body">
+          <ul>
+            <li>Led the innovation and R&amp;D efforts in development of numerical algorithms with focus on computational mechanics (i.e., physics-based numerical deformation of 3D images) leveraging bp's HPC. Focused on FEM (finite element method) and MPM (material point method) methods.</li>
+            <li>Processed hundreds of the 3D digital rock images to reduce noise, enhance coherence, and preserve grain edges. Post-filtering, segmented the 3D digital rock images based on the x-ray attenuation.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="work__item">
+        <summary class="work__summary">
+          <div><span class="work__company">InspiritAI <span class="work__loc">· Remote</span></span><p class="work__role">Research Mentor &amp; Instructor</p></div>
+          <span class="work__right"><span class="work__date">2022 — Present</span><span class="work__chevron" aria-hidden="true">›</span></span>
+        </summary>
+        <div class="work__body">
+          <ul>
+            <li>Guide students through the intricacies of AI research, from first research question to publication.</li>
+            <li>Teach multiple AI bootcamps every quarter that expose high-school students to fundamental AI concepts and programming skills, guiding them to build a socially impactful project through hands-on machine learning coding activities.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+
+  <!-- ===== Contact modal (Get In Touch) ===== -->
+  <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close-contact></div>
+    <div class="modal__card">
+      <button class="modal__close" type="button" data-close-contact aria-label="Close">×</button>
+      <p class="modal__eyebrow">Get In Touch</p>
+      <h2 class="modal__title" id="contactTitle">Send me a message</h2>
+      <form id="contactForm" novalidate>
+        <!-- Web3Forms access key — replace with your own from https://web3forms.com -->
+        <input type="hidden" name="access_key" value="93476bc6-74ed-4801-b70f-f4c49114e291" />
+        <input type="hidden" name="subject" value="New message from your portfolio site" />
+        <input type="hidden" name="from_name" value="Portfolio — Get In Touch" />
+        <!-- Honeypot anti-spam field (hidden from humans) -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
+        <label class="field">
+          <span class="field__label">Your email</span>
+          <input class="field__input" type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+        </label>
+        <label class="field">
+          <span class="field__label">Subject</span>
+          <input class="field__input" type="text" name="user_subject" placeholder="What's this about?" />
+        </label>
+        <label class="field">
+          <span class="field__label">Message</span>
+          <textarea class="field__area" name="message" required placeholder="Write your message…"></textarea>
+        </label>
+        <button class="modal__submit" type="submit">Send Message</button>
+        <p class="modal__status" id="contactStatus" role="status" aria-live="polite"></p>
+        <p class="modal__alt">Prefer email? <a href="mailto:akerimov@alumni.stanford.edu">akerimov@alumni.stanford.edu</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* --- Sticky nav --- */
+      var nav = document.querySelector(".nav");
+      function onScroll() { nav.classList.toggle("nav--solid", window.scrollY > window.innerHeight * 0.8); }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      /* --- Count-up --- */
+      function animateCount(el) {
+        var target = parseFloat(el.getAttribute("data-count-to"));
+        var suffix = el.getAttribute("data-count-suffix") || "";
+        var prefix = el.getAttribute("data-count-prefix") || "";
+        if (reduce) { el.textContent = prefix + target + suffix; return; }
+        var dur = 1400, start = null;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + Math.round(eased * target) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      /* --- Reveal + counters --- */
+      var revealEls = document.querySelectorAll(".reveal");
+      var counters = document.querySelectorAll("[data-count-to]");
+      if ("IntersectionObserver" in window && !reduce) {
+        var revealIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in-view"); revealIO.unobserve(e.target); } });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        revealEls.forEach(function (el) { revealIO.observe(el); });
+        var countIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { animateCount(e.target); countIO.unobserve(e.target); } });
+        }, { threshold: 0.5 });
+        counters.forEach(function (el) { el.textContent = (el.getAttribute("data-count-prefix") || "") + "0" + (el.getAttribute("data-count-suffix") || ""); countIO.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add("in-view"); });
+        counters.forEach(animateCount);
+      }
+
+      /* --- Active nav link --- */
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav__link"));
+      var sections = navLinks.map(function (l) { return document.querySelector(l.getAttribute("href")); }).filter(Boolean);
+      if ("IntersectionObserver" in window && sections.length) {
+        var linkIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              var id = e.target.getAttribute("id");
+              navLinks.forEach(function (l) { l.classList.toggle("nav__link--active", l.getAttribute("href") === "#" + id); });
+            }
+          });
+        }, { rootMargin: "-45% 0px -50% 0px" });
+        sections.forEach(function (s) { linkIO.observe(s); });
+      }
+
+      /* --- Publications filter --- */
+      var cards = Array.prototype.slice.call(document.querySelectorAll(".pcard"));
+      var filters = Array.prototype.slice.call(document.querySelectorAll(".filter"));
+      var empty = document.querySelector(".pubs__empty");
+
+
+      function applyFilter(cat) {
+        var shown = 0;
+        cards.forEach(function (card) {
+          var match = (cat === "all" || card.getAttribute("data-cat") === cat);
+          card.classList.toggle("is-hidden", !match);
+          if (match) {
+            shown++;
+            if (!reduce) {
+              card.classList.remove("is-pop");
+              // force reflow so the animation can replay
+              void card.offsetWidth;
+              card.classList.add("is-pop");
+            }
+          }
+        });
+        if (empty) empty.style.display = shown === 0 ? "block" : "none";
+      }
+
+      filters.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          filters.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+          applyFilter(btn.getAttribute("data-filter"));
+        });
+      });
+
+      /* Apply whichever filter is marked active by default (no pop animation on load) */
+      var initial = filters.filter(function (b) { return b.getAttribute("aria-pressed") === "true"; })[0];
+      if (initial) {
+        cards.forEach(function (card) {
+          card.classList.toggle("is-hidden", !(initial.getAttribute("data-filter") === "all" || card.getAttribute("data-cat") === initial.getAttribute("data-filter")));
+        });
+      }
+
+      /* --- Contact modal (Get In Touch) --- */
+      var modal = document.getElementById("contactModal");
+      if (modal) {
+        var openers = document.querySelectorAll("[data-open-contact]");
+        var closers = modal.querySelectorAll("[data-close-contact]");
+        var form = document.getElementById("contactForm");
+        var status = document.getElementById("contactStatus");
+        var lastFocus = null;
+
+        function openModal() {
+          lastFocus = document.activeElement;
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+          var first = modal.querySelector("input[name='email']");
+          if (first) first.focus();
+        }
+        function closeModal() {
+          modal.classList.remove("open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          if (lastFocus) lastFocus.focus();
+        }
+        openers.forEach(function (b) { b.addEventListener("click", openModal); });
+        closers.forEach(function (b) { b.addEventListener("click", closeModal); });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+        });
+
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var btn = form.querySelector(".modal__submit");
+            status.className = "modal__status";
+            status.textContent = "";
+            if (!form.email.value || !form.message.value) {
+              status.className = "modal__status err";
+              status.textContent = "Please add your email and a message.";
+              return;
+            }
+            // Fold the visitor's subject into the email subject line if provided
+            if (form.user_subject && form.user_subject.value.trim()) {
+              form.subject.value = form.user_subject.value.trim();
+            }
+            var data = new FormData(form);
+            btn.disabled = true; btn.textContent = "Sending…";
+            fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              headers: { "Accept": "application/json" },
+              body: data
+            }).then(function (r) { return r.json(); }).then(function (json) {
+              if (json.success) {
+                status.className = "modal__status ok";
+                status.textContent = "Thanks! Your message has been sent.";
+                form.reset();
+              } else {
+                status.className = "modal__status err";
+                status.textContent = json.message || "Something went wrong. Please email me directly.";
+              }
+            }).catch(function () {
+              status.className = "modal__status err";
+              status.textContent = "Network error. Please email me directly.";
+            }).finally(function () {
+              btn.disabled = false; btn.textContent = "Send Message";
+            });
+          });
+        }
+      }
+
+    })();
+  </script>
+</body>
+
+</html>
