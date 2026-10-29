@@ -124,6 +124,15 @@
       }
       .hero[data-hero="arch"] .hero__inner { padding: 5rem 1.2rem 3.5rem; gap: 1.2rem; }
     }
+    /* Phone only — shrink the hero further so it reads comfortably. */
+    @media (max-width: 620px) {
+      .hero[data-hero="arch"] .arc { width: min(240px, 62vw); border-width: 1px; }
+      .hero[data-hero="arch"] .arc { box-shadow: 0 20px 44px rgba(0,0,0,0.42), inset 0 0 0 7px rgba(177,135,47,0.20); }
+      .hero[data-hero="arch"] .hero__hey { font-size: clamp(2rem, 9vw, 2.8rem); }
+      .hero[data-hero="arch"] .hero__role { font-size: clamp(1.05rem, 4.5vw, 1.4rem); }
+      .hero[data-hero="arch"] .hero__inner { padding: 4.5rem 1.2rem 3rem; gap: 1rem; }
+      .hero[data-hero="arch"] .hero__socials a { width: 42px; height: 42px; }
+    }
 
     /* ===== About ===== */
     .about { max-width: var(--maxw); margin: 0 auto; padding: 5.5rem 1.5rem; }
@@ -652,7 +661,6 @@
       // ---- Continuous auto-scroll ---------------------------------------
       var SPEED = 40;                 // pixels per second
       var paused = false;
-      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var last = null;
       function tick(now) {
         if (last == null) last = now;
@@ -663,7 +671,9 @@
         }
         requestAnimationFrame(tick);
       }
-      if (!reduceMotion) requestAnimationFrame(tick);
+      // Roll on every device, including phones. (No reduced-motion gate, so the
+      // auto-scroll still runs even if the phone has "Reduce Motion" enabled.)
+      requestAnimationFrame(tick);
 
       // Pause while the visitor is hovering, focused inside, or touching.
       function pause() { paused = true; }
