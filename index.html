@@ -124,14 +124,18 @@
       }
       .hero[data-hero="arch"] .hero__inner { padding: 5rem 1.2rem 3.5rem; gap: 1.2rem; }
     }
-    /* Phone only — shrink the hero further so it reads comfortably. */
+    /* Phone only — significant shrink so the whole hero fits one screen. */
     @media (max-width: 620px) {
-      .hero[data-hero="arch"] .arc { width: min(240px, 62vw); border-width: 1px; }
-      .hero[data-hero="arch"] .arc { box-shadow: 0 20px 44px rgba(0,0,0,0.42), inset 0 0 0 7px rgba(177,135,47,0.20); }
-      .hero[data-hero="arch"] .hero__hey { font-size: clamp(2rem, 9vw, 2.8rem); }
-      .hero[data-hero="arch"] .hero__role { font-size: clamp(1.05rem, 4.5vw, 1.4rem); }
-      .hero[data-hero="arch"] .hero__inner { padding: 4.5rem 1.2rem 3rem; gap: 1rem; }
-      .hero[data-hero="arch"] .hero__socials a { width: 42px; height: 42px; }
+      .hero[data-hero="arch"] .arc {
+        width: min(180px, 50vw);
+        box-shadow: 0 14px 32px rgba(0,0,0,0.4), inset 0 0 0 5px rgba(177,135,47,0.20);
+      }
+      .hero[data-hero="arch"] .hero__hey { font-size: clamp(1.6rem, 7.5vw, 2.1rem); }
+      .hero[data-hero="arch"] .hero__role { font-size: clamp(0.85rem, 3.6vw, 1.1rem); letter-spacing: 0.08em; }
+      .hero[data-hero="arch"] .hero__inner { padding: 4rem 1rem 2.5rem; gap: 0.8rem; }
+      .hero[data-hero="arch"] .hero__socials { gap: 0.6rem; margin-top: 1rem; }
+      .hero[data-hero="arch"] .hero__socials a { width: 38px; height: 38px; }
+      .hero[data-hero="arch"] .hero__socials svg { width: 18px; height: 18px; }
     }
 
     /* ===== About ===== */
@@ -659,15 +663,21 @@
       }
 
       // ---- Continuous auto-scroll ---------------------------------------
+      // Mobile browsers round scrollLeft to whole pixels, so tiny per-frame
+      // increments get rounded to 0 and never move. We accumulate the position
+      // in a float (pos) and write it each frame, which survives the rounding.
       var SPEED = 40;                 // pixels per second
       var paused = false;
       var last = null;
+      var pos = scroller.scrollLeft;
       function tick(now) {
         if (last == null) last = now;
         var dt = (now - last) / 1000; last = now;
         if (!paused && !down) {
-          scroller.scrollLeft += SPEED * dt;
-          wrap();
+          pos += SPEED * dt;
+          var h = half();
+          if (h > 0 && pos >= h) pos -= h;
+          scroller.scrollLeft = pos;
         }
         requestAnimationFrame(tick);
       }
@@ -688,7 +698,9 @@
       // Arrow buttons nudge one card (and wrap so they never hit a dead end).
       if (prev) prev.addEventListener("click", function () { scroller.scrollBy({ left: -step(), behavior: "smooth" }); });
       if (next) next.addEventListener("click", function () { scroller.scrollBy({ left: step(), behavior: "smooth" }); });
-      scroller.addEventListener("scroll", wrap, { passive: true });
+      // Keep the auto-roll position in sync with wherever the scroll actually is
+      // (after a swipe, flick, or arrow click) so it resumes smoothly.
+      scroller.addEventListener("scroll", function () { wrap(); if (paused || down) pos = scroller.scrollLeft; }, { passive: true });
 
       // ---- Click-and-drag to scroll (trackpad/touch work natively) ------
       var down = false, startX = 0, startScroll = 0, moved = false;
@@ -706,7 +718,7 @@
       });
       function endDrag() {
         if (!down) return;
-        down = false; last = null; scroller.classList.remove("is-dragging");
+        down = false; last = null; pos = scroller.scrollLeft; scroller.classList.remove("is-dragging");
       }
       scroller.addEventListener("pointerup", endDrag);
       scroller.addEventListener("pointercancel", endDrag);
