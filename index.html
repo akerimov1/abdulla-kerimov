@@ -63,15 +63,23 @@
     .nav__brand { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.25rem; letter-spacing: -0.01em; color: #fdf6ee; text-shadow: 0 1px 12px rgba(0,0,0,0.35); transition: color 0.3s ease, text-shadow 0.3s ease; }
     .nav--solid .nav__brand { color: var(--text); text-shadow: none; }
     .nav__brand .accent { color: var(--gold); }
-    .nav__links { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+    .nav__links { display: flex; gap: 0.4rem; justify-content: center; }
     .nav__link { padding: 0.65rem 1.35rem; border-radius: 999px; font-size: 1.18rem; font-weight: 600; color: rgba(253, 246, 238, 0.9); text-shadow: 0 1px 10px rgba(0,0,0,0.3); transition: color 0.2s ease, background 0.2s ease, text-shadow 0.2s ease; }
     .nav__link:hover { color: #fff; background: rgba(255,255,255,0.14); }
     .nav--solid .nav__link { color: var(--text-soft); text-shadow: none; }
     .nav--solid .nav__link:hover { color: var(--cardinal); background: var(--accent-soft); }
     .nav__link--active { color: #fff; background: rgba(255,255,255,0.14); }
     .nav--solid .nav__link--active { color: var(--cardinal); background: var(--accent-soft); }
-    @media (max-width: 620px) { .nav { justify-content: center; padding: 0.6rem 0.75rem; } .nav__brand { display: none; } .nav__links { gap: 0.15rem; } .nav__link { padding: 0.45rem 0.7rem; font-size: 0.9rem; } }
-    @media (max-width: 380px) { .nav__link { padding: 0.4rem 0.55rem; font-size: 0.82rem; } }
+    @media (max-width: 620px) {
+      /* Keep the nav to a SINGLE row; if the links don't fit, let them scroll
+         horizontally instead of wrapping onto a second row over the photo. */
+      .nav { justify-content: flex-start; padding: 0.5rem 0.4rem; }
+      .nav__brand { display: none; }
+      .nav__links { gap: 0.1rem; flex-wrap: nowrap; overflow-x: auto; width: 100%; justify-content: flex-start; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .nav__links::-webkit-scrollbar { display: none; }
+      .nav__link { padding: 0.4rem 0.65rem; font-size: 0.82rem; white-space: nowrap; flex: 0 0 auto; }
+    }
+    @media (max-width: 380px) { .nav__link { padding: 0.4rem 0.55rem; font-size: 0.78rem; } }
 
     /* ===== Hero ===== */
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: linear-gradient(135deg, var(--cardinal-deep), #3a0a0a 70%); }
@@ -729,6 +737,18 @@
         if (scroller.scrollLeft >= h) scroller.scrollLeft -= h;
         else if (scroller.scrollLeft < 0) scroller.scrollLeft += h;
       }
+      // On touch devices, resetting scrollLeft mid-gesture kills momentum
+      // scrolling, so the strip feels stuck. Instead we wrap only once the
+      // scroll has settled (debounced), and never while a finger is down.
+      var touching = false, settleTimer = null;
+      function wrapWhenIdle() {
+        if (settleTimer) clearTimeout(settleTimer);
+        settleTimer = setTimeout(function () {
+          if (touching || down) return;
+          wrap();
+          pos = scroller.scrollLeft;
+        }, 140);
+      }
 
       // One "page" = card width + gap, so the arrows advance one card.
       function step() {
@@ -774,14 +794,21 @@
       // Arrow buttons nudge one card (and wrap so they never hit a dead end).
       if (prev) prev.addEventListener("click", function () { scroller.scrollBy({ left: -step(), behavior: "smooth" }); });
       if (next) next.addEventListener("click", function () { scroller.scrollBy({ left: step(), behavior: "smooth" }); });
-      // Keep the auto-roll position in sync with wherever the scroll actually is
-      // (after a swipe, flick, or arrow click) so it resumes smoothly.
-      scroller.addEventListener("scroll", function () { wrap(); if (paused || down) pos = scroller.scrollLeft; }, { passive: true });
+      // Keep the auto-roll position in sync with wherever the scroll actually is,
+      // and wrap only once scrolling settles so touch momentum isn't interrupted.
+      scroller.addEventListener("scroll", function () { if (paused || down || touching) pos = scroller.scrollLeft; wrapWhenIdle(); }, { passive: true });
 
-      // ---- Click-and-drag to scroll (trackpad/touch work natively) ------
+      // Pause the auto-roll while a finger is on the strip (native swipe wins).
+      scroller.addEventListener("touchstart", function () { touching = true; paused = true; }, { passive: true });
+      scroller.addEventListener("touchend", function () { touching = false; paused = false; last = null; pos = scroller.scrollLeft; }, { passive: true });
+      scroller.addEventListener("touchcancel", function () { touching = false; paused = false; last = null; pos = scroller.scrollLeft; }, { passive: true });
+
+      // ---- Mouse click-and-drag to scroll (touch/trackpad scroll natively) ----
       var down = false, startX = 0, startScroll = 0, moved = false;
       scroller.addEventListener("pointerdown", function (e) {
-        if (e.pointerType === "mouse" && e.button !== 0) return;
+        // Mouse only — on touch we let the browser's native scrolling handle it.
+        if (e.pointerType !== "mouse") return;
+        if (e.button !== 0) return;
         down = true; moved = false; startX = e.clientX; startScroll = scroller.scrollLeft;
         scroller.classList.add("is-dragging");
       });
