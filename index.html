@@ -49,8 +49,8 @@
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     /* Phone only — shrink the whole layout by scaling the root font size.
        Everything is built on rem units, so type and spacing shrink together. */
-    @media (max-width: 620px) { html { font-size: 68%; } }
-    @media (max-width: 400px) { html { font-size: 62%; } }
+    @media (max-width: 620px) { html { font-size: 84%; } }
+    @media (max-width: 400px) { html { font-size: 80%; } }
     body { margin: 0; font-family: "Inter", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     h1, h2, h3 { line-height: 1.15; margin: 0; }
     a { color: inherit; text-decoration: none; }
@@ -159,7 +159,7 @@
     .box__sub { margin: 0.4rem 0 0; color: var(--text-soft); font-size: 0.95rem; }
     .box__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .box__tags li { font-size: 0.88rem; font-weight: 600; color: var(--cardinal); background: var(--accent-soft); padding: 0.35rem 0.85rem; border-radius: 999px; }
-    @media (max-width: 620px) { .boxes { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) { .boxes { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; } .box { padding: 1.1rem; } }
 
     .section__title { font-family: "Fraunces", serif; font-weight: 600; font-size: 2rem; margin-bottom: 2rem; display: flex; align-items: baseline; gap: 0.6rem; }
 
