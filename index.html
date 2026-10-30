@@ -123,6 +123,10 @@
     .hero[data-hero="arch"] .arc__img {
       transform: translate(-44%, 0) scale(1); top: auto; bottom: 0;
       left: 50%; height: 90%; width: auto; object-position: bottom center;
+      /* Fade the bottom of the photo out to transparent so it blends softly
+         into the frame instead of ending on a hard edge. */
+      -webkit-mask-image: linear-gradient(to bottom, #000 45%, rgba(0,0,0,0.35) 72%, transparent 95%);
+      mask-image: linear-gradient(to bottom, #000 45%, rgba(0,0,0,0.35) 72%, transparent 95%);
     }
     .hero[data-hero="arch"] .hero__hey { font-size: clamp(3rem, 7.5vw, 5.2rem); }
     .hero[data-hero="arch"] .hero__intro { margin: 0; }
